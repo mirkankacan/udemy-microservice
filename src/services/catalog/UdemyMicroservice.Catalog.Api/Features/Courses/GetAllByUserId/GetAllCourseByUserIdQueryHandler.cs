@@ -1,4 +1,5 @@
 ﻿using Mapster;
+using UdemyMicroservice.Catalog.Api.Data;
 using UdemyMicroservice.Catalog.Api.Features.Courses.Dtos;
 
 namespace UdemyMicroservice.Catalog.Api.Features.Courses.GetAllByUserId

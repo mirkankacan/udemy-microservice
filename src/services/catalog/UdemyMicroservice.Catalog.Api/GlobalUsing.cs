@@ -3,7 +3,7 @@ global using MassTransit;
 global using MediatR;
 global using Microsoft.EntityFrameworkCore;
 global using System.Net;
+global using UdemyMicroservice.Catalog.Api.Data;
 global using UdemyMicroservice.Catalog.Api.Features.Categories.Dtos;
-global using UdemyMicroservice.Catalog.Api.Repositories;
 global using UdemyMicroservice.Shared;
 global using UdemyMicroservice.Shared.Extensions;

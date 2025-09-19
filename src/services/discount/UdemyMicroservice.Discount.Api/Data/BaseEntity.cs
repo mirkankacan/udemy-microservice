@@ -1,11 +1,7 @@
-﻿using MongoDB.Bson.Serialization.Attributes;
-
-namespace UdemyMicroservice.Catalog.Api.Repositories
+﻿namespace UdemyMicroservice.Discount.Api.Data
 {
     public abstract class BaseEntity
     {
-        // Snow flake algoritması
-        [BsonElement("_id")]
         public Guid Id { get; set; }
 
         public DateTime CreatedAt { get; set; }

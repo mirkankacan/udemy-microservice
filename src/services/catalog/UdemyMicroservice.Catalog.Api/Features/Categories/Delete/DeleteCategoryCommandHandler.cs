@@ -1,4 +1,6 @@
-﻿namespace UdemyMicroservice.Catalog.Api.Features.Categories.Delete
+﻿using UdemyMicroservice.Catalog.Api.Data;
+
+namespace UdemyMicroservice.Catalog.Api.Features.Categories.Delete
 {
     public class DeleteCategoryCommandHandler(AppDbContext appDbContext) : IRequestHandler<DeleteCategoryCommand, ServiceResult<Unit>>
     {

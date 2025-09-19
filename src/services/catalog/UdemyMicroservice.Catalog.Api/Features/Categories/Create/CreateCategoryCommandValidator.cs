@@ -1,8 +1,8 @@
 ﻿namespace UdemyMicroservice.Catalog.Api.Features.Categories.Create
 {
-    public class UpdateCategoryCommandValidator : AbstractValidator<CreateCategoryCommand>
+    public class CreateCategoryCommandValidator : AbstractValidator<CreateCategoryCommand>
     {
-        public UpdateCategoryCommandValidator()
+        public CreateCategoryCommandValidator()
         {
             RuleFor(x => x.Name)
                 .NotEmpty().WithMessage("{PropertyName} cannot be empty")

@@ -1,4 +1,5 @@
 ﻿using Mapster;
+using UdemyMicroservice.Catalog.Api.Data;
 
 namespace UdemyMicroservice.Catalog.Api.Features.Categories.Create
 {

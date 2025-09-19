@@ -1,4 +1,6 @@
-﻿namespace UdemyMicroservice.Catalog.Api.Features.Courses.Delete
+﻿using UdemyMicroservice.Catalog.Api.Data;
+
+namespace UdemyMicroservice.Catalog.Api.Features.Courses.Delete
 {
     public class DeleteCourseCommandHandler(AppDbContext appDbContext) : IRequestHandler<DeleteCourseCommand, ServiceResult<Unit>>
     {

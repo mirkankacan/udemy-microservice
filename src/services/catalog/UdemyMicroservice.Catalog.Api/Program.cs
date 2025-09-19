@@ -2,6 +2,8 @@ using Asp.Versioning.Builder;
 using Mapster;
 using System.Reflection;
 using UdemyMicroservice.Catalog.Api;
+using UdemyMicroservice.Catalog.Api.Data;
+using UdemyMicroservice.Catalog.Api.Data.Extensions;
 using UdemyMicroservice.Catalog.Api.Features.Categories;
 using UdemyMicroservice.Catalog.Api.Features.Courses;
 using UdemyMicroservice.Catalog.Api.Options;
@@ -11,7 +13,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddOptionsExtensions();
-builder.Services.AddRepositoryExtensions();
+builder.Services.AddDataExtensions();
 builder.Services.AddCommonServiceExtension(typeof(CatalogAssembly));
 builder.Services.AddVersioningExtension();
 

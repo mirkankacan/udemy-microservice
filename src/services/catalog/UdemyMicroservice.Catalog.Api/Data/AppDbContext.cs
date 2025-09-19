@@ -3,7 +3,7 @@ using System.Reflection;
 using UdemyMicroservice.Catalog.Api.Features.Categories;
 using UdemyMicroservice.Catalog.Api.Features.Courses;
 
-namespace UdemyMicroservice.Catalog.Api.Repositories
+namespace UdemyMicroservice.Catalog.Api.Data
 {
     public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
     {

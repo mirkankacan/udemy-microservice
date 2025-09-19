@@ -1,7 +1,7 @@
 ﻿using UdemyMicroservice.Catalog.Api.Features.Categories;
 using UdemyMicroservice.Catalog.Api.Features.Courses;
 
-namespace UdemyMicroservice.Catalog.Api.Repositories
+namespace UdemyMicroservice.Catalog.Api.Data
 {
     public static class SeedData
     {

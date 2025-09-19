@@ -1,11 +1,11 @@
 ﻿using MongoDB.Driver;
 using UdemyMicroservice.Catalog.Api.Options;
 
-namespace UdemyMicroservice.Catalog.Api.Repositories
+namespace UdemyMicroservice.Catalog.Api.Data.Extensions
 {
-    public static class RepositoryExtension
+    public static class DataExtension
     {
-        public static IServiceCollection AddRepositoryExtensions(this IServiceCollection services)
+        public static IServiceCollection AddDataExtensions(this IServiceCollection services)
         {
             services.AddSingleton<IMongoClient, MongoClient>(sp =>
             {
