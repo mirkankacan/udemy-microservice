@@ -6,9 +6,9 @@ using UdemyMicroservice.Shared;
 
 namespace UdemyMicroservice.Discount.Api.Features.Discounts.GetById
 {
-    public class GetDiscountByIdQueryHandler(AppDbContext appDbContext) : IRequestHandler<GetDiscountByIdQuery, ServiceResult<DiscountDto>>
+    public class GetDiscountByCodeQueryHandler(AppDbContext appDbContext) : IRequestHandler<GetDiscountByCodeQuery, ServiceResult<DiscountDto>>
     {
-        public async Task<ServiceResult<DiscountDto>> Handle(GetDiscountByIdQuery query, CancellationToken cancellationToken)
+        public async Task<ServiceResult<DiscountDto>> Handle(GetDiscountByCodeQuery query, CancellationToken cancellationToken)
         {
             var discount = await appDbContext.Discounts.AsNoTracking().FirstOrDefaultAsync(x => x.Id == query.Id, cancellationToken);
             if (discount is null)

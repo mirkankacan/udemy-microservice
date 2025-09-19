@@ -2,6 +2,7 @@
 using UdemyMicroservice.Catalog.Api.Features.Categories.GetAll;
 using UdemyMicroservice.Discount.Api.Features.Discounts.Create;
 using UdemyMicroservice.Discount.Api.Features.Discounts.Delete;
+using UdemyMicroservice.Discount.Api.Features.Discounts.GetByCode;
 using UdemyMicroservice.Discount.Api.Features.Discounts.GetById;
 using UdemyMicroservice.Discount.Api.Features.Discounts.Update;
 
@@ -20,6 +21,7 @@ namespace UdemyMicroservice.Discount.Api.Features.Discounts
                 .GetDiscountByIdGroupItemEndpoint()
                 .DeleteDiscountGroupItemEndpoint()
                 .UpdateDiscountGroupItemEndpoint()
+                .GetDiscountByCodeGroupItemEndpoint()
                 /*.RequireAuthorization()*/;
         }
     }

@@ -3,5 +3,5 @@ using UdemyMicroservice.Shared;
 
 namespace UdemyMicroservice.Discount.Api.Features.Discounts.GetById
 {
-    public record GetDiscountByIdQuery(Guid Id) : IRequestByServiceResult<DiscountDto>;
+    public record GetDiscountByCodeQuery(Guid Id) : IRequestByServiceResult<DiscountDto>;
 }
