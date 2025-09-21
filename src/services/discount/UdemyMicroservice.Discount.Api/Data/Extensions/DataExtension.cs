@@ -1,5 +1,6 @@
 ﻿using MongoDB.Driver;
 using UdemyMicroservice.Discount.Api.Options;
+using UdemyMicroservice.Shared.Services;
 
 namespace UdemyMicroservice.Discount.Api.Data.Extensions
 {
@@ -15,8 +16,9 @@ namespace UdemyMicroservice.Discount.Api.Data.Extensions
             services.AddScoped(sp =>
             {
                 var mongoClient = sp.GetRequiredService<IMongoClient>();
-                var options = sp.GetRequiredService<MongoOptions>();
-                return AppDbContext.Create(mongoClient.GetDatabase(options.DatabaseName));
+                MongoOptions? options = sp.GetRequiredService<MongoOptions>();
+
+                return AppDbContext.Create(mongoClient.GetDatabase(options.DatabaseName), sp.GetRequiredService<IIdentityService>());
             });
             return services;
         }

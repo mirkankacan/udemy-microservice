@@ -1,8 +1,13 @@
 using Asp.Versioning.Builder;
-using Mapster;
 using Microsoft.EntityFrameworkCore;
-using System.Reflection;
+using UdemyMicroservice.Discount.Api.Features.Discounts;
+using UdemyMicroservice.Order.Application;
+using UdemyMicroservice.Order.Application.Contracts;
+using UdemyMicroservice.Order.Application.Contracts.Repositories;
+using UdemyMicroservice.Order.Application.Contracts.UnitOfWork;
 using UdemyMicroservice.Order.Persistance.Data;
+using UdemyMicroservice.Order.Persistance.Repositories;
+using UdemyMicroservice.Order.Persistance.UnitOfWork;
 using UdemyMicroservice.Shared.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -13,17 +18,17 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 });
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-//builder.Services.AddCommonServiceExtension(typeof(DiscountAssembly));
+builder.Services.AddCommonServiceExtension(typeof(OrderApplicationAssembly));
 builder.Services.AddVersioningExtension();
 
-var config = TypeAdapterConfig.GlobalSettings;
-config.Scan(Assembly.GetExecutingAssembly());
+builder.Services.AddScoped(typeof(IGenericRepository<,>), typeof(GenericRepository<,>));
+builder.Services.AddScoped<IOrderRepository, OrderRepository>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 
 var app = builder.Build();
 
 ApiVersionSet version = app.AddVersionSetExtension();
-//app.AddDiscountGroupEndpointExtension(version);
+app.AddOrderGroupEndpointExtension(version);
 
 if (app.Environment.IsDevelopment())
 {

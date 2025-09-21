@@ -6,9 +6,9 @@ namespace UdemyMicroservice.Order.Domain.Entities
     public class Order : BaseEntity<Guid>
     {
         public string Code { get; set; } = default!;
-        public Guid BuyerId { get; set; }
+        public Guid BuyerId { get; set; } = default!;
         public OrderStatus Status { get; set; }
-        public decimal TotalPrice { get; set; }
+        public decimal LastPrice { get; set; }
         public Guid? PaymentId { get; set; }
         public float? DiscountRate { get; set; }
         public List<OrderItem> OrderItems { get; set; } = new();
@@ -24,9 +24,23 @@ namespace UdemyMicroservice.Order.Domain.Entities
                 Code = GenerateOrderCode(),
                 BuyerId = buyerId,
                 Status = OrderStatus.WaitingForPayment,
-                TotalPrice = 0,
+                LastPrice = 0,
                 OrderItems = new List<OrderItem>(),
                 AddressId = addressId,
+                DiscountRate = discountRate ?? 0
+            };
+        }
+
+        public static Order CreateUnpaidOrder(Guid buyerId, float? discountRate)
+        {
+            return new Order
+            {
+                Id = NewId.NextGuid(),
+                Code = GenerateOrderCode(),
+                BuyerId = buyerId,
+                Status = OrderStatus.WaitingForPayment,
+                LastPrice = 0,
+                OrderItems = new List<OrderItem>(),
                 DiscountRate = discountRate ?? 0
             };
         }
@@ -34,10 +48,13 @@ namespace UdemyMicroservice.Order.Domain.Entities
         public void AddOrderItem(Guid productId, string productName, decimal price)
         {
             var orderItem = new OrderItem();
+            if (DiscountRate.HasValue)
+            {
+                price = price * (1 - (decimal)DiscountRate.Value);
+            }
             orderItem.SetItem(productId, productName, price);
-
             OrderItems.Add(orderItem);
-            CalculateTotalPrice();
+            CalculateLastPrice();
         }
 
         public void SetPaidStatus(Guid paymentId)
@@ -50,19 +67,25 @@ namespace UdemyMicroservice.Order.Domain.Entities
             PaymentId = paymentId;
         }
 
+        public void ApplyDiscount(float discountRate)
+        {
+            if (discountRate < 0 || discountRate > 1)
+            {
+                throw new ArgumentException("Invalid discount rate");
+            }
+            DiscountRate = discountRate;
+            CalculateLastPrice();
+        }
+
         private static string GenerateOrderCode()
         {
             var random = new Random();
-            return $"ORD-{DateTime.UtcNow:yyyyMMddHHmmss}-{random.Next(1000, 9999)}";
+            return $"{DateTime.UtcNow:MMddHHmm}{random.Next(10, 99)}";
         }
 
-        private void CalculateTotalPrice()
+        private void CalculateLastPrice()
         {
-            TotalPrice = OrderItems.Sum(item => item.Price);
-            if (DiscountRate.HasValue)
-            {
-                TotalPrice = TotalPrice * (1 - (decimal)DiscountRate);
-            }
+            LastPrice = OrderItems.Sum(item => item.Price);
         }
     }
 }

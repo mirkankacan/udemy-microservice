@@ -1,6 +1,4 @@
 using Asp.Versioning.Builder;
-using Mapster;
-using System.Reflection;
 using UdemyMicroservice.Discount.Api;
 using UdemyMicroservice.Discount.Api.Data.Extensions;
 using UdemyMicroservice.Discount.Api.Features.Discounts;
@@ -15,9 +13,6 @@ builder.Services.AddOptionsExtensions();
 builder.Services.AddDataExtensions();
 builder.Services.AddCommonServiceExtension(typeof(DiscountAssembly));
 builder.Services.AddVersioningExtension();
-
-var config = TypeAdapterConfig.GlobalSettings;
-config.Scan(Assembly.GetExecutingAssembly());
 
 var app = builder.Build();
 

@@ -14,6 +14,10 @@ namespace UdemyMicroservice.Shared.Extensions
             services.AddMapster();
             services.AddHttpContextAccessor();
             services.AddScoped<IIdentityService, IdentityService>();
+
+            var config = TypeAdapterConfig.GlobalSettings;
+            config.Scan(assembly.Assembly);
+
             return services;
         }
     }

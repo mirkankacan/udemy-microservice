@@ -1,17 +1,18 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
 using MongoDB.Driver;
 using System.Reflection;
+using UdemyMicroservice.Shared.Services;
 
 namespace UdemyMicroservice.Discount.Api.Data
 {
-    public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
+    public class AppDbContext(DbContextOptions<AppDbContext> options, IIdentityService identityService) : DbContext(options)
     {
         public DbSet<Features.Discounts.Discount> Discounts { get; set; }
 
-        public static AppDbContext Create(IMongoDatabase database)
+        public static AppDbContext Create(IMongoDatabase database, IIdentityService identityService)
         {
             var optionsBuilder = new DbContextOptionsBuilder<AppDbContext>().UseMongoDB(database.Client, database.DatabaseNamespace.DatabaseName);
-            return new AppDbContext(optionsBuilder.Options);
+            return new AppDbContext(optionsBuilder.Options, identityService);
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -26,7 +27,7 @@ namespace UdemyMicroservice.Discount.Api.Data
         public override Task<int> SaveChangesAsync(CancellationToken cancellationToken = default)
         {
             var entries = ChangeTracker.Entries<BaseEntity>();
-            var currentUserId = Guid.Empty;
+            var currentUserId = identityService.GetUserId;
             foreach (var entry in entries)
             {
                 switch (entry.State)

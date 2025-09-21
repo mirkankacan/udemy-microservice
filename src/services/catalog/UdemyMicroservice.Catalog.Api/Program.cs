@@ -1,6 +1,4 @@
 using Asp.Versioning.Builder;
-using Mapster;
-using System.Reflection;
 using UdemyMicroservice.Catalog.Api;
 using UdemyMicroservice.Catalog.Api.Data.Extensions;
 using UdemyMicroservice.Catalog.Api.Features.Categories;
@@ -16,9 +14,6 @@ builder.Services.AddOptionsExtensions();
 builder.Services.AddDataExtensions();
 builder.Services.AddCommonServiceExtension(typeof(CatalogAssembly));
 builder.Services.AddVersioningExtension();
-
-var config = TypeAdapterConfig.GlobalSettings;
-config.Scan(Assembly.GetExecutingAssembly());
 
 var app = builder.Build();
 

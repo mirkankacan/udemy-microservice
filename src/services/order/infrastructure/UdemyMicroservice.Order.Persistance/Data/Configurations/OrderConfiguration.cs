@@ -16,7 +16,7 @@ namespace UdemyMicroservice.Order.Persistance.Data.Configurations
                    .IsRequired();
             builder.Property(o => o.Status)
                    .IsRequired();
-            builder.Property(o => o.TotalPrice)
+            builder.Property(o => o.LastPrice)
                    .IsRequired()
                    .HasColumnType("decimal(18,2)");
             builder.Property(o => o.PaymentId);
