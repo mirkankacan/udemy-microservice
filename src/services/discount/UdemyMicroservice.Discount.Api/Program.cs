@@ -7,6 +7,7 @@ using UdemyMicroservice.Discount.Api.Features.Discounts;
 using UdemyMicroservice.Discount.Api.Options;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddOpenApi();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -32,6 +33,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.MapOpenApi();
 }
 
 app.Run();

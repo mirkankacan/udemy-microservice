@@ -2,13 +2,13 @@ using Asp.Versioning.Builder;
 using Mapster;
 using System.Reflection;
 using UdemyMicroservice.Catalog.Api;
-using UdemyMicroservice.Catalog.Api.Data;
 using UdemyMicroservice.Catalog.Api.Data.Extensions;
 using UdemyMicroservice.Catalog.Api.Features.Categories;
 using UdemyMicroservice.Catalog.Api.Features.Courses;
 using UdemyMicroservice.Catalog.Api.Options;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddOpenApi();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
@@ -35,6 +35,7 @@ if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
     app.UseSwaggerUI();
+    app.MapOpenApi();
 }
 
 app.Run();

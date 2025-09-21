@@ -1,0 +1,6 @@
+@UdemyMicroservice.Order.Api_HostAddress = http://localhost:5104
+
+GET {{UdemyMicroservice.Order.Api_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
