@@ -11,10 +11,10 @@ namespace UdemyMicroservice.Discount.Api.Data
             appDbContext.Database.AutoTransactionBehavior = AutoTransactionBehavior.Never;
             if (!await appDbContext.Discounts.AnyAsync(cancellationToken))
             {
-                var categories = new List<DiscountEntity>()
+                var categories = new List<Features.Discounts.Discount>()
                 {
-                    new DiscountEntity() { Code="QWE123",UserId=NewId.NextGuid(),Rate=25,ExpiredAt=DateTime.UtcNow.AddDays(10) },
-                    new DiscountEntity() { Code="ARZ456",UserId=NewId.NextGuid(),Rate=35,ExpiredAt=DateTime.UtcNow.AddDays(5) },
+                    new Features.Discounts.Discount() { Code="QWE123", UserId=NewId.NextGuid(), Rate=25, ExpiredAt=DateTime.UtcNow.AddDays(10) },
+                    new Features.Discounts.Discount() { Code="ARZ456", UserId=NewId.NextGuid(), Rate=35, ExpiredAt=DateTime.UtcNow.AddDays(5) },
                 };
                 await appDbContext.Discounts.AddRangeAsync(categories, cancellationToken);
                 await appDbContext.SaveChangesAsync(cancellationToken);

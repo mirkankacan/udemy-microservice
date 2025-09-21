@@ -1,8 +1,4 @@
 ﻿using Mapster;
-using MediatR;
-using System.Net;
-using UdemyMicroservice.Discount.Api.Features.Discounts.Dtos;
-using UdemyMicroservice.Shared;
 
 namespace UdemyMicroservice.Discount.Api.Features.Discounts.GetById
 {

@@ -4,9 +4,9 @@ using UdemyMicroservice.Discount.Api.Features.Discounts;
 
 namespace UdemyMicroservice.Discount.Api.Data.Configurations
 {
-    public class DiscountEntityConfiguration : IEntityTypeConfiguration<DiscountEntity>
+    public class DiscountEntityConfiguration : IEntityTypeConfiguration<Features.Discounts.Discount>
     {
-        public void Configure(EntityTypeBuilder<DiscountEntity> builder)
+        public void Configure(EntityTypeBuilder<Features.Discounts.Discount> builder)
         {
             builder.ToCollection("discounts");
             builder.HasKey(x => x.Id);

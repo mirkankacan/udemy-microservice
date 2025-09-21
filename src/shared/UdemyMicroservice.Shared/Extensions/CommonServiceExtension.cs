@@ -1,6 +1,7 @@
 ﻿using FluentValidation;
 using Mapster;
 using Microsoft.Extensions.DependencyInjection;
+using UdemyMicroservice.Shared.Services;
 
 namespace UdemyMicroservice.Shared.Extensions
 {
@@ -12,6 +13,7 @@ namespace UdemyMicroservice.Shared.Extensions
             services.AddValidatorsFromAssemblyContaining(assembly);
             services.AddMapster();
             services.AddHttpContextAccessor();
+            services.AddScoped<IIdentityService, IdentityService>();
             return services;
         }
     }

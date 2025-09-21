@@ -1,7 +1,4 @@
 ﻿using Mapster;
-using MediatR;
-using System.Net;
-using UdemyMicroservice.Shared;
 
 namespace UdemyMicroservice.Discount.Api.Features.Discounts.Update
 {
@@ -15,7 +12,7 @@ namespace UdemyMicroservice.Discount.Api.Features.Discounts.Update
                 return ServiceResult<UpdateDiscountCommandResponse>.Error("Discount not found", $"Discount with id '{command.Id}' not found", HttpStatusCode.NotFound);
             }
 
-            var mappedDiscount = command.Adapt<DiscountEntity>();
+            var mappedDiscount = command.Adapt<Discount>();
             appDbContext.Discounts.Update(mappedDiscount);
             await appDbContext.SaveChangesAsync(cancellationToken);
             return ServiceResult<UpdateDiscountCommandResponse>.SuccessAsOk(new UpdateDiscountCommandResponse(mappedDiscount.Id));

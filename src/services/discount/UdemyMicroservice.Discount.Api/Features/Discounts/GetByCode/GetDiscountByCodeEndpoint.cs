@@ -1,6 +1,4 @@
-﻿using MediatR;
-
-namespace UdemyMicroservice.Discount.Api.Features.Discounts.GetByCode
+﻿namespace UdemyMicroservice.Discount.Api.Features.Discounts.GetByCode
 {
     public static class GetDiscountByCodeEndpoint
     {

@@ -1,7 +1,4 @@
-﻿using MediatR;
-using UdemyMicroservice.Discount.Api.Features.Discounts.Dtos;
-
-namespace UdemyMicroservice.Catalog.Api.Features.Categories.GetAll
+﻿namespace UdemyMicroservice.Catalog.Api.Features.Categories.GetAll
 {
     public static class GetAllDiscountEndpoint
     {

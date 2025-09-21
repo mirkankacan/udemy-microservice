@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-
-namespace UdemyMicroservice.Discount.Api.Features.Discounts.Update
+﻿namespace UdemyMicroservice.Discount.Api.Features.Discounts.Update
 {
     public class UpdateDiscountCommandValidator : AbstractValidator<UpdateDiscountCommand>
     {

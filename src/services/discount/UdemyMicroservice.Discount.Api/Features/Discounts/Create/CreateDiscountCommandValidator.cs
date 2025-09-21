@@ -1,6 +1,4 @@
-﻿using FluentValidation;
-
-namespace UdemyMicroservice.Discount.Api.Features.Discounts.Create
+﻿namespace UdemyMicroservice.Discount.Api.Features.Discounts.Create
 {
     public class CreateDiscountCommandValidator : AbstractValidator<CreateDiscountCommand>
     {
@@ -11,8 +9,8 @@ namespace UdemyMicroservice.Discount.Api.Features.Discounts.Create
                 .Length(3, max: 10).WithMessage("{PropertyName} must be between {MinLength} and {MaxLength} characters");
 
             RuleFor(x => x.Rate)
-                .GreaterThan(0).WithMessage("{PropertyName} must be greater than {ComparisonValue}")
-                .NotEmpty().WithMessage("{PropertyName} cannot be empty");
+                .NotEmpty().WithMessage("{PropertyName} cannot be empty")
+                .LessThanOrEqualTo(1).WithMessage("{PropertyName} must be less than or equal to 1.");
 
             RuleFor(x => x.UserId)
               .Must(userId => userId != Guid.Empty)

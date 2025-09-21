@@ -1,6 +1,4 @@
-﻿using MediatR;
-
-namespace UdemyMicroservice.Discount.Api.Features.Discounts.Delete
+﻿namespace UdemyMicroservice.Discount.Api.Features.Discounts.Delete
 {
     public static class DeleteDiscountEndpoint
     {

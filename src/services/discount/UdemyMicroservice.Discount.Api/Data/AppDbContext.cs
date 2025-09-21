@@ -1,13 +1,12 @@
 ﻿using Microsoft.EntityFrameworkCore.ChangeTracking;
 using MongoDB.Driver;
 using System.Reflection;
-using UdemyMicroservice.Discount.Api.Features.Discounts;
 
 namespace UdemyMicroservice.Discount.Api.Data
 {
     public class AppDbContext(DbContextOptions<AppDbContext> options) : DbContext(options)
     {
-        public DbSet<DiscountEntity> Discounts { get; set; }
+        public DbSet<Features.Discounts.Discount> Discounts { get; set; }
 
         public static AppDbContext Create(IMongoDatabase database)
         {

@@ -1,7 +1,4 @@
-﻿using MediatR;
-using UdemyMicroservice.Shared;
-
-namespace UdemyMicroservice.Discount.Api.Features.Discounts.Delete
+﻿namespace UdemyMicroservice.Discount.Api.Features.Discounts.Delete
 {
     public class DeleteDiscountCommandHandler(AppDbContext appDbContext) : IRequestHandler<DeleteDiscountCommand, ServiceResult<Unit>>
     {

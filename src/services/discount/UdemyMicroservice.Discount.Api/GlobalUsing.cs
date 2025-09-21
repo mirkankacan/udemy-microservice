@@ -1,4 +1,9 @@
-﻿global using MassTransit;
+﻿global using FluentValidation;
+global using MassTransit;
+global using MediatR;
 global using Microsoft.EntityFrameworkCore;
+global using System.Net;
 global using UdemyMicroservice.Discount.Api.Data;
+global using UdemyMicroservice.Discount.Api.Features.Discounts.Dtos;
+global using UdemyMicroservice.Shared;
 global using UdemyMicroservice.Shared.Extensions;

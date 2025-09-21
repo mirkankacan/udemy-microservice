@@ -1,8 +1,4 @@
-﻿using MediatR;
-using System.Net;
-using UdemyMicroservice.Shared;
-
-namespace UdemyMicroservice.Discount.Api.Features.Discounts.GetByCode
+﻿namespace UdemyMicroservice.Discount.Api.Features.Discounts.GetByCode
 {
     public class GetDiscountByCodeQueryHandler(AppDbContext appDbContext) : IRequestHandler<GetDiscountByCodeQuery, ServiceResult<GetDiscountByCodeQueryResponse>>
     {

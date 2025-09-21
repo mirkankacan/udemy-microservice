@@ -1,5 +1,4 @@
-﻿using MediatR;
-using UdemyMicroservice.Shared.Filters;
+﻿using UdemyMicroservice.Shared.Filters;
 
 namespace UdemyMicroservice.Discount.Api.Features.Discounts.Create
 {

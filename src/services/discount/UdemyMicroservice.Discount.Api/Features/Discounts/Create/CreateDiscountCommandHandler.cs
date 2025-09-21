@@ -1,7 +1,4 @@
 ﻿using Mapster;
-using MediatR;
-using System.Net;
-using UdemyMicroservice.Shared;
 
 namespace UdemyMicroservice.Discount.Api.Features.Discounts.Create
 {
@@ -15,7 +12,7 @@ namespace UdemyMicroservice.Discount.Api.Features.Discounts.Create
             {
                 return ServiceResult<CreateDiscountCommandResponse>.Error("Discount code already exist for user", $"The discount code '{command.Code}' already exist for user", HttpStatusCode.BadRequest);
             }
-            var newDiscount = command.Adapt<DiscountEntity>();
+            var newDiscount = command.Adapt<Discount>();
             await appDbContext.Discounts.AddAsync(newDiscount, cancellationToken);
             await appDbContext.SaveChangesAsync(cancellationToken);
 

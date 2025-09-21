@@ -1,0 +1,13 @@
+@baseAddress = http://localhost:5023
+
+POST {{baseAddress}}/api/v1/basket/item
+Accept: application/json
+Content-Type: application/json
+{
+    "id": "string",
+    "name": "string",
+    "price": 100,
+    "imageUrl": "test"
+}
+
+###
