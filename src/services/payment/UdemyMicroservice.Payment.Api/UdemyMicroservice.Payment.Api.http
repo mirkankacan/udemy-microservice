@@ -1,0 +1,6 @@
+@yarpBaseAddress = http://localhost:5200
+
+GET {{yarpBaseAddress}}/v1.0/payments/user
+Accept: application/json
+
+###
