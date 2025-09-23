@@ -14,7 +14,7 @@ namespace UdemyMicroservice.Discount.Api.Features.Discounts
                 .WithDescription("File management endpoints for uploading and managing files")
                 .UploadFileGroupItemEndpoint()
                 .DeleteFileGroupItemEndpoint()
-                /*.RequireAuthorization()*/;
+                .RequireAuthorization();
         }
     }
 }

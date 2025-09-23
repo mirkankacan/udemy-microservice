@@ -12,6 +12,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddCommonServiceExtension(typeof(FileAssembly));
 builder.Services.AddVersioningExtension();
 builder.Services.AddSingleton<IFileProvider>(new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
+builder.Services.AddAuthenticationAndAuthorizationExtension(builder.Configuration);
 
 var app = builder.Build();
 
@@ -24,5 +25,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.MapOpenApi();
 }
+app.UseAuthentication();
+app.UseAuthorization();
 app.UseStaticFiles();
 app.Run();

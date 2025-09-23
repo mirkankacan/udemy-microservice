@@ -16,7 +16,8 @@ namespace UdemyMicroservice.Payment.Api.Features.Payments.GetByUser
                 .MapToApiVersion(1, 0)
                 .Produces<List<PaymentDto>>(StatusCodes.Status200OK)
                 .ProducesProblem(StatusCodes.Status400BadRequest)
-                .ProducesProblem(StatusCodes.Status500InternalServerError);
+                .ProducesProblem(StatusCodes.Status500InternalServerError)
+                .RequireAuthorization("Password");
             return group;
         }
     }

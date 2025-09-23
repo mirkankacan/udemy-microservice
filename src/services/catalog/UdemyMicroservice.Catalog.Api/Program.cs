@@ -14,6 +14,7 @@ builder.Services.AddOptionsExtensions();
 builder.Services.AddDataExtensions();
 builder.Services.AddCommonServiceExtension(typeof(CatalogAssembly));
 builder.Services.AddVersioningExtension();
+builder.Services.AddAuthenticationAndAuthorizationExtension(builder.Configuration);
 
 var app = builder.Build();
 
@@ -32,5 +33,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.MapOpenApi();
 }
-
+app.UseAuthentication();
+app.UseAuthorization();
 app.Run();

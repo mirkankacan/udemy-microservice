@@ -20,7 +20,7 @@ namespace UdemyMicroservice.Basket.Api.Features.Baskets
                 .DeleteBasketItemGroupItemEndpoint()
                 .ApplyDiscountCouponGroupItemEndpoint()
                 .RemoveDiscountCouponGroupItemEndpoint()
-                /*.RequireAuthorization()*/;
+                .RequireAuthorization();
         }
     }
 }

@@ -24,6 +24,7 @@ builder.Services.AddVersioningExtension();
 builder.Services.AddScoped(typeof(IGenericRepository<,>), typeof(GenericRepository<,>));
 builder.Services.AddScoped<IOrderRepository, OrderRepository>();
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+builder.Services.AddAuthenticationAndAuthorizationExtension(builder.Configuration);
 
 var app = builder.Build();
 
@@ -37,4 +38,6 @@ if (app.Environment.IsDevelopment())
     app.MapOpenApi();
 }
 
+app.UseAuthentication();
+app.UseAuthorization();
 app.Run();

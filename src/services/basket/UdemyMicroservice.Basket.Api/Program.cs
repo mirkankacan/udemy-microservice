@@ -14,6 +14,7 @@ builder.Services.AddStackExchangeRedisCache(opts =>
     opts.Configuration = builder.Configuration.GetConnectionString("Redis");
 });
 builder.Services.AddScoped<IBasketService, BasketService>();
+builder.Services.AddAuthenticationAndAuthorizationExtension(builder.Configuration);
 
 var app = builder.Build();
 
@@ -26,5 +27,6 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.MapOpenApi();
 }
-
+app.UseAuthentication();
+app.UseAuthorization();
 app.Run();

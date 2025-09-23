@@ -13,7 +13,7 @@ namespace UdemyMicroservice.Discount.Api.Features.Discounts
                 .WithDescription("Order management endpoints for creating, reading, updating, and deleting orders")
                 .CreateOrderGroupItemEndpoint()
                 .GetOrdersByBuyerGroupItemEndpoint()
-                /*.RequireAuthorization()*/;
+                .RequireAuthorization();
         }
     }
 }

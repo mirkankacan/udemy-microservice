@@ -17,7 +17,7 @@ namespace UdemyMicroservice.Payment.Api.Features.Payments.Create
                 .MapToApiVersion(1, 0)
                 .Produces<Guid>(StatusCodes.Status201Created)
                 .ProducesProblem(StatusCodes.Status400BadRequest)
-                .AddEndpointFilter<ValidationFilter<CreatePaymentCommand>>();
+                .AddEndpointFilter<ValidationFilter<CreatePaymentCommand>>().RequireAuthorization("ClientCredentials");
             return group;
         }
     }

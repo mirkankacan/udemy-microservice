@@ -22,7 +22,7 @@ namespace UdemyMicroservice.Discount.Api.Features.Discounts
                 .DeleteDiscountGroupItemEndpoint()
                 .UpdateDiscountGroupItemEndpoint()
                 .GetDiscountByCodeGroupItemEndpoint()
-                /*.RequireAuthorization()*/;
+                .RequireAuthorization();
         }
     }
 }

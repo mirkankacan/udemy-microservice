@@ -13,8 +13,7 @@ namespace UdemyMicroservice.Discount.Api.Features.Discounts
                 .WithTags("Payments")
                 .WithDescription("Payment management endpoints for creating and reading payments")
                 .CreatePaymentGroupItemEndpoint()
-                .GetPaymentsByUserGroupItemEndpoint()
-                /*.RequireAuthorization()*/;
+                .GetPaymentsByUserGroupItemEndpoint();
         }
     }
 }

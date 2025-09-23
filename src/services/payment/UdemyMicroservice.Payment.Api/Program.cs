@@ -15,7 +15,7 @@ builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCommonServiceExtension(typeof(PaymentAssembly));
 builder.Services.AddVersioningExtension();
-
+builder.Services.AddAuthenticationAndAuthorizationExtension(builder.Configuration);
 var app = builder.Build();
 
 ApiVersionSet version = app.AddVersionSetExtension();
@@ -27,5 +27,9 @@ if (app.Environment.IsDevelopment())
     app.UseSwaggerUI();
     app.MapOpenApi();
 }
+
+app.UseAuthentication();
+app.UseAuthorization();
+
 app.UseStaticFiles();
 app.Run();
