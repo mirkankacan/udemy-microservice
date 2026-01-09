@@ -20,7 +20,7 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCommonServiceExtension(typeof(OrderApplicationAssembly));
-builder.Services.AddMassTransitCommonExtension(builder.Configuration);
+builder.Services.AddMassTransitCommonExtension(builder.Configuration, typeof(OrderApplicationAssembly));
 builder.Services.AddVersioningExtension();
 
 builder.Services.AddScoped(typeof(IGenericRepository<,>), typeof(GenericRepository<,>));

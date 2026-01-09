@@ -15,7 +15,7 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCommonServiceExtension(typeof(PaymentAssembly));
-builder.Services.AddMassTransitCommonExtension(builder.Configuration);
+builder.Services.AddMassTransitCommonExtension(builder.Configuration, typeof(PaymentAssembly));
 builder.Services.AddVersioningExtension();
 builder.Services.AddAuthenticationAndAuthorizationExtension(builder.Configuration);
 var app = builder.Build();

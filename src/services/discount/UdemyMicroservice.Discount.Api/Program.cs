@@ -13,7 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddOptionsExtensions();
 builder.Services.AddDataExtensions();
 builder.Services.AddCommonServiceExtension(typeof(DiscountAssembly));
-builder.Services.AddMassTransitCommonExtension(builder.Configuration);
+builder.Services.AddMassTransitCommonExtension(builder.Configuration, typeof(DiscountAssembly));
 builder.Services.AddVersioningExtension();
 builder.Services.AddAuthenticationAndAuthorizationExtension(builder.Configuration);
 

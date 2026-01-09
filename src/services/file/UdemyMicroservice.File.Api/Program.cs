@@ -10,9 +10,8 @@ builder.Services.AddOpenApi();
 
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-builder.Services.AddCommonServiceExtension(typeof(FileAssembly));
-//builder.Services.AddMassTransitCommonExtension(builder.Configuration);
-builder.Services.AddMassTransitExtension(builder.Configuration);
+builder.Services.AddCommonServiceExtension(assembly: typeof(FileAssembly));
+builder.Services.AddMassTransitCommonExtension(builder.Configuration, typeof(FileAssembly));
 builder.Services.AddVersioningExtension();
 builder.Services.AddSingleton<IFileProvider>(new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
 builder.Services.AddAuthenticationAndAuthorizationExtension(builder.Configuration);

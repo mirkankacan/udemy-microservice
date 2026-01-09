@@ -9,7 +9,7 @@ builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCommonServiceExtension(typeof(BasketAssembly));
-builder.Services.AddMassTransitCommonExtension(builder.Configuration);
+builder.Services.AddMassTransitCommonExtension(builder.Configuration, typeof(BasketAssembly));
 builder.Services.AddVersioningExtension();
 builder.Services.AddStackExchangeRedisCache(opts =>
 {

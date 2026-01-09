@@ -1,9 +1,11 @@
 ﻿using MassTransit;
 using Microsoft.Extensions.FileProviders;
 using UdemyMicroservice.Bus.Commands;
+using UdemyMicroservice.Bus.Events;
 
 namespace UdemyMicroservice.File.Api.Consumer
 {
+    [EntityName("file-microservice.upload-course-image-command.queue")]
     public class UploadCourseImageCommandConsumer(IServiceProvider sp) : IConsumer<UploadCourseImageCommand>
     {
         public async Task Consume(ConsumeContext<UploadCourseImageCommand> context)
@@ -26,6 +28,9 @@ namespace UdemyMicroservice.File.Api.Consumer
 
             var uploadPath = Path.Combine(baseFolderPath, newFileName);
             await System.IO.File.WriteAllBytesAsync(uploadPath, context.Message.Image);
+
+            var publishEndpoint = scope.ServiceProvider.GetRequiredService<IPublishEndpoint>();
+            await publishEndpoint.Publish(new CoursePictureUploadedEvent(context.Message.CourseId, uploadPath));
         }
     }
 }
