@@ -1,9 +1,9 @@
 ﻿using Mapster;
-using UdemyMicroservice.Catalog.Api.Data;
+using UdemyMicroservice.Bus.Commands;
 
 namespace UdemyMicroservice.Catalog.Api.Features.Courses.Create
 {
-    public class CreateCourseCommandHandler(AppDbContext appDbContext) : IRequestHandler<CreateCourseCommand, ServiceResult<CreateCourseCommandResponse>>
+    public class CreateCourseCommandHandler(AppDbContext appDbContext, IPublishEndpoint publishEndpoint) : IRequestHandler<CreateCourseCommand, ServiceResult<CreateCourseCommandResponse>>
     {
         public async Task<ServiceResult<CreateCourseCommandResponse>> Handle(CreateCourseCommand command, CancellationToken cancellationToken)
         {
@@ -33,6 +33,15 @@ namespace UdemyMicroservice.Catalog.Api.Features.Courses.Create
             };
             await appDbContext.Courses.AddAsync(newCourse);
             await appDbContext.SaveChangesAsync(cancellationToken);
+
+            if (command.Image is not null)
+            {
+                await using var memoryStream = new MemoryStream();
+                await command.Image.CopyToAsync(memoryStream, cancellationToken);
+                var imageAsByteArray = memoryStream.ToArray();
+                UploadCourseImageCommand uploadCourseImageCommand = new(newCourse.Id, imageAsByteArray, command.Image.FileName);
+                await publishEndpoint.Publish(uploadCourseImageCommand, cancellationToken);
+            }
 
             return ServiceResult<CreateCourseCommandResponse>.SuccessAsCreated(new CreateCourseCommandResponse(newCourse.Id), $"/api/courses/{newCourse.Id}");
         }

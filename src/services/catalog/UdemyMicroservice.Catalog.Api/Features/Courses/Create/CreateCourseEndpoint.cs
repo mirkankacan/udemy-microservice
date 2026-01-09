@@ -1,4 +1,5 @@
-﻿using UdemyMicroservice.Shared.Filters;
+﻿using Microsoft.AspNetCore.Mvc;
+using UdemyMicroservice.Shared.Filters;
 
 namespace UdemyMicroservice.Catalog.Api.Features.Courses.Create
 {
@@ -6,7 +7,7 @@ namespace UdemyMicroservice.Catalog.Api.Features.Courses.Create
     {
         public static RouteGroupBuilder CreateCourseGroupItemEndpoint(this RouteGroupBuilder group)
         {
-            group.MapPost("/", async (CreateCourseCommand command, IMediator mediator) =>
+            group.MapPost("/", async ([FromForm] CreateCourseCommand command, IMediator mediator) =>
             {
                 return (await mediator.Send(command)).ToGenericResult();
             })
@@ -15,7 +16,8 @@ namespace UdemyMicroservice.Catalog.Api.Features.Courses.Create
                 .Produces<Guid>(StatusCodes.Status200OK)
                 .ProducesProblem(StatusCodes.Status404NotFound)
                 .ProducesProblem(StatusCodes.Status400BadRequest)
-                .AddEndpointFilter<ValidationFilter<CreateCourseCommand>>();
+                .AddEndpointFilter<ValidationFilter<CreateCourseCommand>>()
+                .DisableAntiforgery();
             return group;
         }
     }

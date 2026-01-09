@@ -134,10 +134,24 @@ services:
     depends_on:
       - postgres.db.keycloak
 
+  rabbitmq:
+    restart: always
+    image: rabbitmq:4.2.2-management
+    container_name: rabbitmq.container
+    ports:
+      - 5672:5672
+      - 15672:15672
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASSWORD}
+    volumes:
+      - rabbitmq_data:/var/lib/rabbitmq
+
 volumes:
   mongo.db.catalog.volume:
   mongo.db.discount.volume:
   redis.db.basket.volume:
   sqlserver.db.order.volume:
   postgres.db.keycloak.volume:
-  postgres.db.keycloak.ui.volume:  
+  postgres.db.keycloak.ui.volume:
+  rabbitmq_data:  

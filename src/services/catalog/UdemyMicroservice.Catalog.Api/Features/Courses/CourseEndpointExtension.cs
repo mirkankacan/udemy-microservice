@@ -21,8 +21,8 @@ namespace UdemyMicroservice.Catalog.Api.Features.Courses
                 .GetCourseByIdGroupItemEndpoint()
                 .DeleteCourseGroupItemEndpoint()
                 .UpdateCourseGroupItemEndpoint()
-                .GetAllCourseByUserIdGroupItemEndpoint()
-                .RequireAuthorization();
+                .GetAllCourseByUserIdGroupItemEndpoint();
+            //.RequireAuthorization();
         }
     }
 }

@@ -1,5 +1,6 @@
 using Asp.Versioning.Builder;
 using Microsoft.EntityFrameworkCore;
+using UdemyMicroservice.Bus.Extensions;
 using UdemyMicroservice.Discount.Api.Features.Discounts;
 using UdemyMicroservice.Payment.Api;
 using UdemyMicroservice.Payment.Api.Data;
@@ -14,6 +15,7 @@ builder.Services.AddDbContext<AppDbContext>(option =>
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCommonServiceExtension(typeof(PaymentAssembly));
+builder.Services.AddMassTransitCommonExtension(builder.Configuration);
 builder.Services.AddVersioningExtension();
 builder.Services.AddAuthenticationAndAuthorizationExtension(builder.Configuration);
 var app = builder.Build();

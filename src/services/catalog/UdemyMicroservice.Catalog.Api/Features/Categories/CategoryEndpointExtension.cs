@@ -19,8 +19,8 @@ namespace UdemyMicroservice.Catalog.Api.Features.Categories
                 .GetAllCategoryGroupItemEndpoint()
                 .GetCategoryByIdGroupItemEndpoint()
                 .DeleteCategoryGroupItemEndpoint()
-                .UpdateCategoryGroupItemEndpoint()
-                .RequireAuthorization();
+                .UpdateCategoryGroupItemEndpoint();
+            //.RequireAuthorization();
         }
     }
 }

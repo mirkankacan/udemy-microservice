@@ -1,4 +1,5 @@
 using Asp.Versioning.Builder;
+using UdemyMicroservice.Bus.Extensions;
 using UdemyMicroservice.Discount.Api;
 using UdemyMicroservice.Discount.Api.Data.Extensions;
 using UdemyMicroservice.Discount.Api.Features.Discounts;
@@ -12,6 +13,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddOptionsExtensions();
 builder.Services.AddDataExtensions();
 builder.Services.AddCommonServiceExtension(typeof(DiscountAssembly));
+builder.Services.AddMassTransitCommonExtension(builder.Configuration);
 builder.Services.AddVersioningExtension();
 builder.Services.AddAuthenticationAndAuthorizationExtension(builder.Configuration);
 

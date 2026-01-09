@@ -1,5 +1,4 @@
-﻿using MassTransit;
-using UdemyMicroservice.Order.Domain.Enums;
+﻿using UdemyMicroservice.Order.Domain.Enums;
 
 namespace UdemyMicroservice.Order.Domain.Entities
 {
@@ -20,7 +19,7 @@ namespace UdemyMicroservice.Order.Domain.Entities
         {
             return new Order
             {
-                Id = NewId.NextGuid(),
+                Id = Guid.CreateVersion7(),
                 Code = GenerateOrderCode(),
                 BuyerId = buyerId,
                 Status = OrderStatus.WaitingForPayment,
@@ -35,7 +34,7 @@ namespace UdemyMicroservice.Order.Domain.Entities
         {
             return new Order
             {
-                Id = NewId.NextGuid(),
+                Id = Guid.CreateVersion7(),
                 Code = GenerateOrderCode(),
                 BuyerId = buyerId,
                 Status = OrderStatus.WaitingForPayment,

@@ -1,5 +1,6 @@
 using Asp.Versioning.Builder;
 using Microsoft.Extensions.FileProviders;
+using UdemyMicroservice.Bus.Extensions;
 using UdemyMicroservice.Discount.Api.Features.Discounts;
 using UdemyMicroservice.File.Api;
 using UdemyMicroservice.Shared.Extensions;
@@ -10,6 +11,8 @@ builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCommonServiceExtension(typeof(FileAssembly));
+//builder.Services.AddMassTransitCommonExtension(builder.Configuration);
+builder.Services.AddMassTransitExtension(builder.Configuration);
 builder.Services.AddVersioningExtension();
 builder.Services.AddSingleton<IFileProvider>(new PhysicalFileProvider(Path.Combine(Directory.GetCurrentDirectory(), "wwwroot")));
 builder.Services.AddAuthenticationAndAuthorizationExtension(builder.Configuration);

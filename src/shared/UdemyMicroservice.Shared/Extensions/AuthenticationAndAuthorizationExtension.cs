@@ -11,7 +11,7 @@ namespace UdemyMicroservice.Shared.Extensions
     {
         public static IServiceCollection AddAuthenticationAndAuthorizationExtension(this IServiceCollection services, IConfiguration configuration)
         {
-            var identityOptions = configuration.GetSection("IdentityOptions").Get<IdentityOption>();
+            var identityOptions = configuration.GetSection("IdentityOptions").Get<IdentityOption>()!;
             services.AddAuthentication()
                 .AddJwtBearer(JwtBearerDefaults.AuthenticationScheme, options =>
                 {

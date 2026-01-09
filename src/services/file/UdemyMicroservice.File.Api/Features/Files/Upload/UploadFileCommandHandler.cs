@@ -37,14 +37,11 @@ namespace UdemyMicroservice.File.Api.Features.Files.Upload
             }
 
             var newFileName = $"{Guid.NewGuid()}{fileExtension}";
-
             var baseFolderPath = fileProvider.GetFileInfo(targetFolder).PhysicalPath!;
-            var userId = identityService.GetUserId.ToString();
-            var userFolderPath = Path.Combine(baseFolderPath, userId);
 
-            Directory.CreateDirectory(userFolderPath);
+            Directory.CreateDirectory(baseFolderPath);
 
-            var uploadPath = Path.Combine(userFolderPath, newFileName);
+            var uploadPath = Path.Combine(baseFolderPath, newFileName);
 
             await using var stream = new FileStream(uploadPath, FileMode.Create);
             await command.File.CopyToAsync(stream, cancellationToken);

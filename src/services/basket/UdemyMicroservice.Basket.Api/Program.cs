@@ -2,12 +2,14 @@ using Asp.Versioning.Builder;
 using UdemyMicroservice.Basket.Api;
 using UdemyMicroservice.Basket.Api.Features.Baskets;
 using UdemyMicroservice.Basket.Api.Services;
+using UdemyMicroservice.Bus.Extensions;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddOpenApi();
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
 builder.Services.AddCommonServiceExtension(typeof(BasketAssembly));
+builder.Services.AddMassTransitCommonExtension(builder.Configuration);
 builder.Services.AddVersioningExtension();
 builder.Services.AddStackExchangeRedisCache(opts =>
 {

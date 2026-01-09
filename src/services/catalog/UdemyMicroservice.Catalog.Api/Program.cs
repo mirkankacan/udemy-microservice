@@ -1,4 +1,5 @@
 using Asp.Versioning.Builder;
+using UdemyMicroservice.Bus.Extensions;
 using UdemyMicroservice.Catalog.Api;
 using UdemyMicroservice.Catalog.Api.Data.Extensions;
 using UdemyMicroservice.Catalog.Api.Features.Categories;
@@ -13,6 +14,7 @@ builder.Services.AddSwaggerGen();
 builder.Services.AddOptionsExtensions();
 builder.Services.AddDataExtensions();
 builder.Services.AddCommonServiceExtension(typeof(CatalogAssembly));
+builder.Services.AddMassTransitCommonExtension(builder.Configuration);
 builder.Services.AddVersioningExtension();
 builder.Services.AddAuthenticationAndAuthorizationExtension(builder.Configuration);
 
